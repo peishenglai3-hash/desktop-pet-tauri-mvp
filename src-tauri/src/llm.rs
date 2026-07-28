@@ -98,7 +98,7 @@ pub async fn save_provider_secret(config: ProviderSecret) -> Result<()> {
     write_api_key(&config.provider, &config.api_key)?;
 
     let probe = SendChatRequest {
-        provider: config.provider,
+        provider: config.provider.clone(),
         model: config.model,
         base_url: config.base_url,
         messages: vec![ChatMessage {
