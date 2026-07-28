@@ -1,0 +1,289 @@
+:root {
+  color: #21302a;
+  background: transparent;
+  font-family:
+    Inter, "Microsoft YaHei UI", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.pet-app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 230px;
+  align-items: end;
+  justify-content: center;
+  padding: 10px;
+  background: transparent;
+}
+
+.pet-app.is-open {
+  grid-template-columns: 230px 330px;
+  gap: 12px;
+  justify-content: end;
+}
+
+.pet-stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: end;
+  min-height: 280px;
+}
+
+.pet-button {
+  width: 224px;
+  height: 260px;
+  display: grid;
+  place-items: end center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 16px 18px rgba(31, 42, 36, 0.22));
+}
+
+.sprite-shell {
+  width: 192px;
+  height: 208px;
+  transform: scale(1.08);
+  transform-origin: center bottom;
+}
+
+.sprite {
+  width: 192px;
+  height: 208px;
+  background-repeat: no-repeat;
+  background-size: 1536px 2288px;
+  animation: sprite-step 880ms steps(8) infinite;
+}
+
+@keyframes sprite-step {
+  from {
+    background-position-x: 0;
+  }
+
+  to {
+    background-position-x: -1536px;
+  }
+}
+
+.idle-tip {
+  position: absolute;
+  right: 8px;
+  bottom: 226px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid rgba(50, 84, 73, 0.18);
+  border-radius: 999px;
+  color: #254235;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 8px 24px rgba(26, 38, 33, 0.16);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.notebook {
+  align-self: center;
+  width: 330px;
+  height: min(560px, calc(100vh - 24px));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border: 1px solid rgba(72, 91, 79, 0.18);
+  border-radius: 8px;
+  background: #fffdf6;
+  box-shadow: 0 24px 60px rgba(24, 35, 31, 0.28);
+}
+
+.notebook-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 10px 14px;
+  border-bottom: 1px solid #e9e0cc;
+}
+
+.title,
+.tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-weight: 700;
+  color: #254235;
+}
+
+.tabs button,
+.composer button,
+.save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tabs button {
+  width: 32px;
+  height: 32px;
+  color: #52665c;
+  background: transparent;
+}
+
+.tabs button.active {
+  color: #14261f;
+  background: #dcecdf;
+  border-color: #c5ddcc;
+}
+
+.tabs button.ghost:hover,
+.tabs button:hover {
+  background: #f1eadb;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 14px;
+  overflow: auto;
+  background:
+    linear-gradient(#fffdf6 31px, transparent 31px) 0 0 / 100% 32px,
+    linear-gradient(90deg, rgba(217, 121, 104, 0.14) 1px, transparent 1px) 42px 0 / 100% 100%;
+}
+
+.message {
+  width: fit-content;
+  max-width: 92%;
+  margin: 0;
+  padding: 9px 11px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  line-height: 1.48;
+  font-size: 14px;
+}
+
+.message.assistant {
+  color: #26362e;
+  background: rgba(227, 241, 229, 0.92);
+  border: 1px solid #cce2d0;
+}
+
+.message.user {
+  align-self: flex-end;
+  color: #26362e;
+  background: rgba(248, 230, 202, 0.96);
+  border: 1px solid #efd6aa;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr 42px;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e9e0cc;
+  background: #fbf5e8;
+}
+
+.composer input,
+.settings-panel input,
+.settings-panel select {
+  min-width: 0;
+  height: 40px;
+  padding: 0 11px;
+  border: 1px solid #d9ceb9;
+  border-radius: 8px;
+  color: #23362c;
+  background: #fffefa;
+  outline: none;
+}
+
+.composer input:focus,
+.settings-panel input:focus,
+.settings-panel select:focus {
+  border-color: #8eb79c;
+  box-shadow: 0 0 0 3px rgba(142, 183, 156, 0.18);
+}
+
+.composer button,
+.save {
+  height: 40px;
+  color: #102118;
+  background: #b8ddbd;
+  border-color: #99caa4;
+}
+
+.composer button:disabled,
+.save:disabled {
+  cursor: not-allowed;
+  opacity: 0.54;
+}
+
+.settings-panel {
+  display: grid;
+  align-content: start;
+  gap: 13px;
+  padding: 14px;
+}
+
+.settings-panel label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: #4b5c52;
+}
+
+.hint {
+  margin: 0;
+  color: #69796f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.save {
+  gap: 7px;
+  width: fit-content;
+  padding: 0 13px;
+}
+
+@media (max-width: 620px) {
+  .pet-app,
+  .pet-app.is-open {
+    grid-template-columns: 1fr;
+    align-content: end;
+    justify-items: center;
+  }
+
+  .notebook {
+    width: min(330px, calc(100vw - 20px));
+    height: 430px;
+  }
+}
